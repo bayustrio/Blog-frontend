@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from "redux";
 const initialState = {
   dataLogin: [],
   dataRegister: [],
+  dataPost: [],
   cout: 99,
 };
 
@@ -19,11 +20,21 @@ const rootReducer: any = (state = initialState, action: any) => {
         ...state,
         dataRegister: action.payload,
       };
-      case 'SET_LOGIN_FAILED':
-        return {
-            ...state,
-            dataLogin: action.payload,
-        };
+    case "SET_LOGIN_FAILED":
+      return {
+        ...state,
+        dataLogin: action.payload,
+      };
+    case "GET_DATA":
+      return {
+        ...state,
+        dataPost: action.payload
+      };
+      case "ADD_POST":
+      return {
+        ...state,
+        dataPost:[ state.dataPost, action.payload]
+      };
     default:
       return state;
   }

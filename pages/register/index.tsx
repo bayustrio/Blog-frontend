@@ -15,20 +15,23 @@ const index = () => {
   const [load, setLoad] = useState<boolean>(false);
   const [checked, setChecked] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
-  const [username, setUsername] = useState<string>("");
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   const handleSubmitRegis = (e: any) => {
     e.preventDefault();
 
     setLoad(true);
-    if (username === "" || email === "" || password === "") {
+    if (firstName === "" || email === "" || password === "" || lastName === "") {
       toast.error('Please fill all field')
       setLoad(false);
 
     }
     else{
-        dispatch(setRegister(username, password, email));
+        // dispatch(setRegister(firstName,lastName, password, email)});
+        // DISPATCH 4 ARGUMEN
+        dispatch(setRegister(firstName,lastName,password,email))
         setLoad(false);
     }
   };
@@ -58,17 +61,27 @@ const index = () => {
               </p>
 
               {/* USERNAME INPUT */}
-              <p className="text-regis username">Username</p>
+              <div style={{display:'flex',flexDirection:'column'}}>
+              <p className="text-regis username">First Name</p>
               <input
                 type="text"
-                value={username}
-                placeholder="Enter your username"
+                value={firstName}
+                placeholder="Enter your First Name"
                 onChange={(e) => {
-                  setUsername(e.target.value);
+                  setFirstName(e.target.value);
                 }}
                 className="input-register "
               />
 
+              <p className="text-regis username">Last Name</p>
+              <input 
+                className="input-register "
+                value={lastName}
+                onChange={(e) => {
+                  setLastName(e.target.value)
+                }}
+               placeholder="Enter your Last Name"/>
+</div>
               {/* EMAIL INPUT */}
               <p className="text-regis">Email</p>
               <input

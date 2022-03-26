@@ -36,7 +36,7 @@ const Navbar = (props: Props) => {
                 onClick={(e) => {
                     e.preventDefault()
                   Cookies.remove('token')
-                  Cookies.remove('username')
+                  Cookies.remove('email')
                   Router.push('/login')
                 }}
               >

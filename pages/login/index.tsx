@@ -21,29 +21,37 @@ const index = () => {
   const [load, setLoad] = useState<boolean>(true);
   const [toas, setToas] = useState<any>(null);
   // STATE LOGIN
-  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   // BUTTON SUBMIT LOGIN PAGES
   const handleSubmit = (e: any) => {
     e.preventDefault();
       axios
-        .post("https://blog-test-api-mern.herokuapp.com/user/login", {
-          username: username,
+        .post("https://blog-mern-api-node.herokuapp.com/api/login", {
+          email: email,
           password: password,
         })
         .then((res) => {
-          const token = res.data.token;
-          Cookies.set("token", token);
-          Cookies.set("username", res.data.username)
+          const accessToken = res.data.token;
+          Cookies.set("token", accessToken);
+          Cookies.set('email', res.data.user.email)
           setLoad(false);
           setToas(toast.success("Login Success"));
           Router.push("/");
           
         })
-        .catch((res) => {
-          console.log(res, "<<< ERROR");
-          toast.error('Invalid Username or Password');
+        .catch((err) => {
+          console.log(err.response.status,'<< ERROR THIS IS');
+          console.log(err.response.data.message)
+          const error:any = err.response.status
+          if(error === 400) {
+            toast.error(err.response.data.message)
+          }else if (error === 404) {
+            toast.error(err.response.data.message)
+          }
+
+          // toast.error('Invalid Username or Password');
         
 
           // const errorCode = <p>ErrorBroooo</p>
@@ -76,14 +84,14 @@ const index = () => {
                   <div className="bottom-content">
                     <form action="#" method="post">
                       <input
-                        type="username"
-                        value={username}
+                        type="email"
+                        value={email}
                         onChange={(e) => {
-                          setUsername(e.target.value);
+                          setEmail(e.target.value);
                         }}
-                        name="username"
+                        name="email"
                         className="input-form"
-                        placeholder="Your Username"
+                        placeholder="Input your Email"
                       />
                       <input
                         type="password"
