@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Layout from "../layout/Layout";
 import { convertToHTML } from "draft-convert";
 // MKEDITOR CONFIG
-import axios from 'axios';
+import axios from "axios";
 import Cookies from "js-cookie";
 import dynamic from "next/dynamic";
 import { setDataPost } from "../Redux-actions/Action";
@@ -14,9 +14,8 @@ import { EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorProps } from "react-draft-wysiwyg";
 import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { useMutation } from 'react-query'
-import toast,{Toaster} from "react-hot-toast";
-
+import { useMutation } from "react-query";
+import toast, { Toaster } from "react-hot-toast";
 
 const Editor = dynamic<EditorProps>(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -64,8 +63,6 @@ const index = () => {
     },
   };
 
-
-
   const handlePost = async (e: any) => {
     e.preventDefault();
     const formData = new FormData();
@@ -74,28 +71,30 @@ const index = () => {
     formData.append("description", description);
     formData.append("image", image);
 
-    try{
-
-      const res = await axios.post("https://blog-mern-api-node.herokuapp.com/api/post", formData, {
-        headers: {
-          "x-access-token": ` ${Cookies.get("token")}`,
-        },
-      })
-      console.log(res.data)
-      toast.success("Post Success")
-    }
-    catch(err){
-      console.log(err)
+    try {
+      const res = await axios.post(
+        "https://blog-mern-api-node.herokuapp.com/api/post",
+        formData,
+        {
+          headers: {
+            "x-access-token": ` ${Cookies.get("token")}`,
+          },
+        }
+      );
+      console.log(res.data);
+      toast.success("Post Success");
+    } catch (err) {
+      console.log(err);
       // toast.error(err.response.data.message)
     }
   };
 
   // ===============END====================
- 
+
   return (
     <Layout>
       <div style={{ backgroundColor: "#F5F4F4" }}>
-        <Toaster/>
+        <Toaster />
         <div className="container">
           <div>
             <h1>Create Post</h1>

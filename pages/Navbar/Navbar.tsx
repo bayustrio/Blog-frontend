@@ -21,9 +21,11 @@ const Navbar = (props: Props) => {
           <li>
             <Link href="/">Home</Link>
           </li>
-          <li>
-            <Link href="/createpost">Cerate Post</Link>
-          </li>
+          {Cookies.get("token") === undefined ? null : (
+            <li>
+              <Link href="/createpost">Create Post</Link>
+            </li>
+          )}
           {Cookies.get("token") === undefined ? (
             <li>
               <Link href="/register">Register</Link>
@@ -34,10 +36,10 @@ const Navbar = (props: Props) => {
               <a
                 href="/"
                 onClick={(e) => {
-                    e.preventDefault()
-                  Cookies.remove('token')
-                  Cookies.remove('email')
-                  Router.push('/login')
+                  e.preventDefault();
+                  Cookies.remove("token");
+                  Cookies.remove("email");
+                  Router.push("/login");
                 }}
               >
                 Logout
