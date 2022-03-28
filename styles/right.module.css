@@ -1,0 +1,9 @@
+.right{
+    flex:3;
+}
+
+@media(max-width:450px) {
+    .right{
+        display:none;
+    }
+}

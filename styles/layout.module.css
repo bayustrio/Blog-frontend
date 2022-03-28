@@ -1,0 +1,9 @@
+.layout{
+    width:50%;
+}
+
+@media(max-width:490px) {
+    .layout{
+        width:100%;
+    }
+}

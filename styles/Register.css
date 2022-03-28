@@ -1,0 +1,140 @@
+
+
+.register{
+    display:flex;
+    width:100%;
+    align-items: center;
+    height:100vh;
+}
+
+    .banner-register{
+        width:60%;
+        background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(../images/bg.jpg) no-repeat ;
+        background-position:10% 40%;
+        background-size: cover;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .text-welcome{
+            display:flex;
+            justify-content: center;
+
+        }
+           .text-welcome h1{
+                color:#fff;
+    }
+
+    .right-register{
+        /* // display:flex; */
+        /* // flex-direction: column; */
+            /* // align-items:center; */
+            width:40%;
+            text-align: left;
+        /* // height:100vh; */
+    }
+
+        .form-register{
+            display:flex;
+            justify-content: center;
+            align-items:center;
+            height:100vh;
+        }
+
+           
+
+
+        .register-input   p{
+                    font-weight: 500;
+                    margin-bottom: 15px;
+                }
+
+
+                .input-register{
+                    width:110%;
+                    height:40px;
+                    border-radius:5px;
+                    /* // border:1px solid #ccc; */
+                    border:none;
+                    padding:0 10px;
+                    margin-bottom:25px;
+                    background-color: #F2F2F2;
+                    font-size:14px;
+                    outline:none;
+                }
+
+                .register-btn{
+                    width:110%;
+                    height:45px;
+                    outline:none;
+                    border:none;
+                    font-size: 15px;
+    background: #2B2022;
+    line-height: 20px;
+                    font-weight: bold;
+                    color: #BD783A;
+                }
+
+                .register-btn:hover{
+                
+                     color:#2B2022;
+     text-decoration: none;
+     transition: all 0.2s ease;
+     -moz-transition: all 0.2s ease;
+     -webkit-transition: all 0.2s ease;
+     -ms-transition: all 0.2s ease;
+     background-color: #BD783A;
+ 
+     -o-transition: all 0.2s ease;
+            }
+
+@media (max-width:480px) {
+    .register{
+        flex-direction: column;
+        width:100%;
+        display:flex;
+    }
+
+    .register  .banner-register{
+            display:none;
+        }
+
+        .register  .banner-register .right-register{
+        padding:10px;
+            background: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.3)),url(../images/bg.jpg) no-repeat ;
+            background-position:10% 40%;
+            background-size: cover;
+            width:100%;
+            /* // padding:25px; */
+        }
+
+        .register  .banner-register .right-register  .right-register  .form-register{
+                color:#fff;
+            }
+
+                    .register-input  .input-register{
+                    width:100%;
+                }
+                
+                .input-register[type="text"]{
+                    color: #333;
+                }
+
+                .input-register[type="password"]{
+                    color: #333;
+                }
+
+                .input-register[type="email"]{
+                    color: #333;
+                }
+
+                  .register-btn{
+                      width:100%;
+                  }
+
+        .chkbx{
+            color:#fff;
+            padding-bottom: 10px;
+        }
+    }
