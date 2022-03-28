@@ -60,17 +60,7 @@ const id = () => {
       });
   }, [addComment]);
 
-  const like = () => {
-    setLikes(1);
-    setDislikes(0);
-    setAction("liked");
-  };
-
-  const dislike = () => {
-    setLikes(0);
-    setDislikes(1);
-    setAction("disliked");
-  };
+  
 
   // ACTION COMMENTAR
   const actions = [
@@ -80,16 +70,7 @@ const id = () => {
         <span className="comment-action">{likes}</span>
       </span>
     </Tooltip>,
-    <Tooltip key="comment-basic-dislike" title="Dislike">
-      <span onClick={dislike}>
-        {React.createElement(
-          action === "disliked" ? DislikeFilled : DislikeOutlined
-        )}
-        <span className="comment-action">{dislikes}</span>
-      </span>
-    </Tooltip>,
-    <span key="comment-basic-reply-to">Reply to</span>,
-  ];
+s  ];
   // =======END========
 
   return (
@@ -139,7 +120,6 @@ const id = () => {
               {dataId.comments?.map((item: any, index: any) => {
                 return (
                   <Comment
-                    actions={actions}
                     author={<a> {item.author?.email}</a>}
                     avatar={
                       <Avatar
