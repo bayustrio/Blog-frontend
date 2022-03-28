@@ -1,8 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import Router from "next/router";
-import toast, { Toaster } from "react-hot-toast";
-import { useMutation } from "react-query";
+import toast from "react-hot-toast";
 
 // =============POST COMMENT=============
 export const postComment = (comment: string,id: any) => {
