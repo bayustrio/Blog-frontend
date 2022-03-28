@@ -14,6 +14,7 @@ import Loading from "../Screen/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import Comment from "../../src/Comment/Comment";
 import en from "javascript-time-ago/locale/en.json";
+import toast, { Toaster } from "react-hot-toast";
 
 const index = () => {
   const dispatch = useDispatch();
@@ -56,8 +57,8 @@ const index = () => {
   }
 
   const getData = data.posts.map((item: any, index: any) => (
-    <div style={{ padding: "10px 0" }} key={item._id}>
-      <div style={{ width: "550px" }} className={`${styles.card} ui card`}>
+    <div style={{ padding:'10px 10px',width:'100%' }} key={item._id}>
+      <div style={{margin:'auto'}} className={`ui card ${styles.layout}`}>
         <div
           className="image "
           onClick={(e) => {
@@ -84,12 +85,15 @@ const index = () => {
           <i className="comment icon"></i>
           {item.comments.length}
         </div>
-        <Comment item={item} />
+        <Comment  item={item} />
       </div>
     </div>
   ));
 
-  return <div>{getData}</div>;
+  return (
+  <div style={{width:'100%'}}>
+    <Toaster/>
+    {getData}</div>);
 };
 
 export default index;

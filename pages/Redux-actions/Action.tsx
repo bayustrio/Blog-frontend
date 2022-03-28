@@ -20,8 +20,7 @@ export const postComment = (comment: string,id: any) => {
       }
     })
     .then((res) => {
-      alert('COMMENT BERHASIL!')
-      console.log(res.data)
+      toast.success('Comment Berhasil')
     })
     .catch(err => console.log(err.response.data.message))
    
@@ -34,7 +33,6 @@ export const getPostAll =  () => {
   return (dispatch:any) => {
     axios.get('https://blog-mern-api-node.herokuapp.com/api/posts')
     .then((res) => {
-      console.log(res.data,'ACTION')
       dispatch({
         type:'GET_DATA',
         payload:res.data.posts
@@ -59,13 +57,6 @@ export const setLogin = (username: string, password: string) => {
         password: password,
       })
       .then((res) => {
-        // const token = res.data.token;
-        console.log(res.data);
-        // Cookies.set("token", token);
-        // dispatch({
-        //   type: "SET_LOGIN",
-        //   payload: res.data,
-        // });
         toast.success("Login Success");
         Router.push("/");
       })
@@ -91,38 +82,27 @@ export const setDataPost = (title: string,image: any,editorState: any,descriptio
         },
       })
       .then((res) => {
-        console.log(res.data);
         alert("BERHASIL");
       })
       .catch((err) => {
         console.log(err);
-        console.log(err.response.data);
+        toast.error(err.response.data);
       });
   };
 };
 
 export const setRegister = (
-  firstName: string,
   password: string,
   email: string,
-  lastName: string
 ) => {
   return (dispatch: any) => {
     axios
-      .post("https://blog-website-backendnodejs.herokuapp.com/user/register", {
-        firstName: firstName,
-        lastName: lastName,
+      .post("https://blog-mern-api-node.herokuapp.com/api/register", {
         password: password,
         email: email,
       })
       .then((res: any) => {
         toast.success('Successfully Registered"');
-        const accessToken: any = res.data.accessToken;
-        const refreshToken: any = res.data.refreshToken;
-        Cookies.set("accessToken", accessToken);
-        Cookies.set("refreshToken", refreshToken);
-
-        // console.log(res.data);
         dispatch({
           type: "SET_REGISTER",
           payload: res.data,

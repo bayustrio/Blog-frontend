@@ -6,7 +6,7 @@ import { Comment, Avatar, Form, Button, Tooltip, Input } from "antd";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 import { postComment } from "../Redux-actions/Action";
-import styles from "../../styles/layout.module.css";
+// import styles from "../../styles/layout.module.css";
 import Highlight from "react-highlight";
 import {
   DislikeOutlined,
@@ -14,6 +14,10 @@ import {
   DislikeFilled,
   LikeFilled,
 } from "@ant-design/icons";
+import toast,{Toaster} from 'react-hot-toast'
+import ReactTimeAgo from "react-time-ago";
+import styles from "../../styles/layout.module.css";
+
 
 const id = () => {
   const { TextArea } = Input;
@@ -28,23 +32,25 @@ const id = () => {
 
   let { id } = router.query;
 
-  useEffect(() => {
-    axios
-      .get(`https://blog-mern-api-node.herokuapp.com/api/post/${id}`)
-      .then((res) => {
-        console.log(res.data);
-        setDataId(res.data);
-        console.log(res.data.comments.text,'<< here')
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [id]);
+ 
 
   const addComment = (e: any) => {
     e.preventDefault();
     dispatch(postComment(text, id));
+    setText('')
+    toast.success('Commentar Berhasil')
   };
+
+  useEffect(() => {
+    axios
+      .get(`https://blog-mern-api-node.herokuapp.com/api/post/${id}`)
+      .then((res) => {
+        setDataId(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [addComment]);
 
   const like = () => {
     setLikes(1);
@@ -81,15 +87,12 @@ const id = () => {
   return (
     <Layout>
       <div className="container">
+        <Toaster/>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <div
-            style={{ width: "60%", minHeight: "100vh" }}
-            className={`${styles.card} ui card`}
+            style={{ margin:'auto', minHeight: "auto" }}
+            className={`${styles.layout} ui card`}
           >
-            {/* <div className="content"> */}
-            {/* <div className="right floated meta">14h</div> */}
-            {/* <img className="ui avatar image" src="/images/avatar/large/elliot.jpg"/> */}
-            {/* </div> */}
             <div className="image">
               <img src={dataId.image} />
             </div>
@@ -113,7 +116,6 @@ const id = () => {
                   value={text}
                   onChange={(e) => {
                     setText(e.target.value);
-                    console.log(text);
                   }}
                 />
               </Form.Item>
@@ -137,16 +139,15 @@ const id = () => {
                         alt="Han Solo"
                       />
                     }
-                    content={item.comments?.text}
+                    content={<p style={{color:'#333'}}>{item.text}</p>}
                     datetime={
                       <Tooltip title={moment().format("YYYY-MM-DD HH:mm:ss")}>
-                        <span>{moment().fromNow()}</span>
+                        <span>{moment(item.date).fromNow()}</span>
                       </Tooltip>
                     }
                   />
                 );
               })}
-              {console.log(dataId)}
             </div>
           </div>
         </div>

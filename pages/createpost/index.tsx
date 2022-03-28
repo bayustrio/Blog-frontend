@@ -50,7 +50,6 @@ const index = () => {
 
   const handleImage = (e: any) => {
     setImage(e.target.files[0]);
-    // setImagePreview(URL.createObjectURL(e.target.files[0]))
     console.log(image, "<<image");
     console.log(e.target);
   };

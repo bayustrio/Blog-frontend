@@ -1,0 +1,9 @@
+.left{
+    flex:5;
+}
+
+@media(max-width:450px) {
+    .left{
+        display:none;
+    }
+}

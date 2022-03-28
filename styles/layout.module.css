@@ -1,5 +1,9 @@
+.layout{
+    width:50%;
+}
+
 @media(max-width:490px) {
-    .card{
+    .layout{
         width:100%;
     }
 }

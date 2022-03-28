@@ -21,11 +21,12 @@ const Navbar = (props: Props) => {
           <li>
             <Link href="/">Home</Link>
           </li>
-          {Cookies.get("token") === undefined ? null : (
+          {Cookies.get("email") === 'bayustrio@gmail.com' || Cookies.get('email') === 'satrio@gmail.com' ? 
             <li>
               <Link href="/createpost">Create Post</Link>
             </li>
-          )}
+          
+          : null}
           {Cookies.get("token") === undefined ? (
             <li>
               <Link href="/register">Register</Link>
