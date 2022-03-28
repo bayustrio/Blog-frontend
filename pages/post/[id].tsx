@@ -32,8 +32,6 @@ const id = () => {
   const dispatch = useDispatch();
   const [dataId, setDataId] = useState([]);
   const [comment, setComment] = useState([]);
-  const [likes, setLikes] = useState(0);
-  const [dislikes, setDislikes] = useState(0);
   const [action, setAction] = useState(null);
   const router = useRouter();
   const [text, setText] = useState<string>("");
@@ -63,14 +61,6 @@ const id = () => {
   
 
   // ACTION COMMENTAR
-  const actions = [
-    <Tooltip key="comment-basic-like" title="Like">
-      <span onClick={like}>
-        {createElement(action === "liked" ? LikeFilled : LikeOutlined)}
-        <span className="comment-action">{likes}</span>
-      </span>
-    </Tooltip>,
-s  ];
   // =======END========
 
   return (
