@@ -1,6 +1,4 @@
 import React from "react";
-import Image from "next/image";
-import Logo from "../../images/logo.png";
 import Link from "next/link";
 import styles from "../../styles/navbar.module.scss";
 // COOKIES
