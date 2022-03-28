@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
-import { Section, Left, Right,RightMob,Center } from "../Style/home.module";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import Layout from "./layout/Layout";

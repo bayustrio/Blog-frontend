@@ -18,6 +18,14 @@ import toast,{Toaster} from 'react-hot-toast'
 import ReactTimeAgo from "react-time-ago";
 import styles from "../../styles/layout.module.css";
 
+type COmment = {
+  id:any;
+  email:any;
+  author:any;
+  image:string;
+  title:string
+}
+
 
 const id = () => {
   const { TextArea } = Input;
