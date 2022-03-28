@@ -8,24 +8,9 @@ import { useDispatch } from "react-redux";
 import { postComment } from "../Redux-actions/Action";
 // import styles from "../../styles/layout.module.css";
 import Highlight from "react-highlight";
-import {
-  DislikeOutlined,
-  LikeOutlined,
-  DislikeFilled,
-  LikeFilled,
-} from "@ant-design/icons";
 import toast,{Toaster} from 'react-hot-toast'
 import ReactTimeAgo from "react-time-ago";
 import styles from "../../styles/layout.module.css";
-
-type COmment = {
-  id:any;
-  email:any;
-  author:any;
-  image:string;
-  title:string
-}
-
 
 const id = () => {
   const { TextArea } = Input;
@@ -34,13 +19,13 @@ const id = () => {
   const [comment, setComment] = useState([]);
   const [action, setAction] = useState(null);
   const router = useRouter();
-  const [text, setText] = useState<string>("");
+  const [text, setText] = useState("");
 
   let { id } = router.query;
 
  
 
-  const addComment = (e: any) => {
+  const addComment = (e) => {
     e.preventDefault();
     dispatch(postComment(text, id));
     setText('')
@@ -107,7 +92,7 @@ const id = () => {
                   Add Comment
                 </Button>
               </Form.Item>
-              {dataId.comments?.map((item: any, index: any) => {
+              {dataId.comments?.map((item, index) => {
                 return (
                   <Comment
                     author={<a> {item.author?.email}</a>}
