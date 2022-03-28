@@ -6,12 +6,12 @@ import { useMutation } from "react-query";
 
 // =============POST COMMENT=============
 export const postComment = (comment: string,id: any) => {
-  return (dispatch: any) => {
+  return () => {
     // const date = Date.now()
     // let minute = date.getMinutes()
    const data ={
      text: comment,
-     postId: id,
+     postId: id
     //  date: 
    }
     axios.post("https://blog-mern-api-node.herokuapp.com/api/comment", data, {
